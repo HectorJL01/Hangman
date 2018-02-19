@@ -25,17 +25,19 @@
         l6: ["_ _", "u"],
         l7: ["_ _", "s"]
       };
+      var guessedLetter = [];
+      var letters = onkeyup;
       var score = 0;
       var wordsIndex = 0;
       var wordsArray = [words.l1, words.l2, words.l3, words.l4, words.l5, words.l6, words.l7];
       // Functions
-      // Function to render questions.
-      function renderQuestion() {
-        // If there are still more questions, render the next one.
+      // Function to render the words.
+      function renderWords() {
+        // If there are still more words, render the next one.
         if (wordsIndex <= (wordsArray.length - 1)) {
           document.querySelector("#words").innerHTML = wordsArray[wordsIndex][0];
         }
-        // If there aren't, render the end game screen.
+        // If there aren't, render the end game.
         else {
           document.querySelector("#words").innerHTML = "Game Over!";
           document.querySelector("#score").innerHTML = "Final Score: " + score + " out of " + wordsArray.length;
@@ -47,11 +49,11 @@
       }
       // Main Process
       // Calling functions to start the game.
-      renderQuestion();
+      renderWords();
       updateScore();
       // When the user presses a key, it will run the following function...
       document.onkeyup = function(event) {
-        // If there are no more questions, stop the function.
+        // If there are no more words, stop.
         if (wordsIndex === wordsArray.length) {
           return;
         }
@@ -71,9 +73,9 @@
           else {
             alert("Wrong!");
           }
-          // Increment the questionIndex variable and call the renderQuestion function.
+          // Increment the wordsIndex variable and call the renderQuestion function.
           wordsIndex++;
-          renderQuestion();
+          renderWords();
         }
       };
     </script>
