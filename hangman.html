@@ -12,19 +12,24 @@
 
 
   <p id="score"></p>
-  <p id="words"></p>
+  <p>
+    <span id="WordToGuess"></span>
+  </p>
 
   <script>
     // Variables
     // The words for game.
-    var guessedLetter = [];
+    var words = ['Brunomars', 'Daftpunk', 'Kiss', 'Peggylee', 'Rihanna', 'Sia'];
+    var chosenWord = [];
     var letters = [];
+    var underscores = [];
+    var userInput = 0;
+    var guessedLetter = [];
     var score = 0;
     var wordsIndex = 0;
-    var chosenWord = [];
-    var underscores = [];
-    //var wordsArray = [words.l1, words.l2, words.l3, words.l4, words.l5, words.l6, words.l7];
-    var words = ['Pencil', 'Paper', 'Notebook', 'Ruler', 'Pen', 'Scissors'];
+    var wordtoDisplay = "";
+    var wtgId = document.getElementById("wordToGuess");
+
 
     // Solution chosen randomly from wordList.
     chosenWord = words[Math.floor(Math.random() * words.length)];
@@ -38,19 +43,47 @@
     }
     console.log(underscores);
 
-    // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
     document.onkeyup = function (event) {
-      var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+      var userInput = String.fromCharCode(event.which).toLowerCase();
       console.log(userInput);
       for (var i = 0; i < letters.length; i++) {
 
         if (userInput === letters[i]) {
           alert("the letter exist in the word");
+          score++;
+          updateScore();
         }
+
       }
 
 
+
+
+
+
+
+
+
+      // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+    // ALL OF THIS PART ITS FROM THE QUESTION EXAMPLE, IM PLAYING WITH IT.///
     // Functions
     // Function to render the words.
     function renderWords() {
@@ -80,20 +113,22 @@
       }
 
       // Only run this code if "letter" or "letter" were pressed.
-      if (userInput === "a" || userInput === "b" || userInput === "c" || userInput === "d" || userInput === "e" || userInput === "f" || userInput === "i" || userInput === "j"
-        || userInput === "k" || userInput === "l" || userInput === "m" || userInput === "n" || userInput === "o" || userInput === "p" || userInput === "q" || userInput === "r" || userInput === "s"
-        || userInput === "t" || userInput === "u" || userInput === "v" || userInput === "w" || userInput === "x" || userInput === "y" || userInput === "z") {
+      if (userInput === "a" || userInput === "b" || userInput === "c" || userInput === "d" || userInput === "e" ||
+        userInput === "f" || userInput === "i" || userInput === "j" ||
+        userInput === "k" || userInput === "l" || userInput === "m" || userInput === "n" || userInput === "o" ||
+        userInput === "p" || userInput === "q" || userInput === "r" || userInput === "s" ||
+        userInput === "t" || userInput === "u" || userInput === "v" || userInput === "w" || userInput === "x" ||
+        userInput === "y" || userInput === "z") {
         // If they guess the correct answer, increase and update score, alert them they got it right.
         if (userInput === wordsArray[wordsIndex][1]) {
           alert("Correct!");
-          score++;
-          updateScore();
+
         }
         // If wrong, alert them they are wrong.
         else {
           alert("Wrong!");
         }
-        // Increment the wordsIndex variable and call the renderQuestion function.
+        // Increment the wordsIndex variable and call the renderwords function.
         wordsIndex++;
         renderWords();
       }
