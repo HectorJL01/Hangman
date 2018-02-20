@@ -14,7 +14,7 @@
 
     <script>
       // Variables
-      // The object questions for game.
+      // The words for game.
 
       var words = {
         l1: ["_ _ _ _ _", "f"],
@@ -26,7 +26,7 @@
         l7: ["_ _", "s"]
       };
       var guessedLetter = [];
-      var letters = onkeyup;
+      var letters = [] ;
       var score = 0;
       var wordsIndex = 0;
       var wordsArray = [words.l1, words.l2, words.l3, words.l4, words.l5, words.l6, words.l7];
@@ -37,13 +37,13 @@
         if (wordsIndex <= (wordsArray.length - 1)) {
           document.querySelector("#words").innerHTML = wordsArray[wordsIndex][0];
         }
-        // If there aren't, render the end game.
+        // If there aren't, end game.
         else {
           document.querySelector("#words").innerHTML = "Game Over!";
           document.querySelector("#score").innerHTML = "Final Score: " + score + " out of " + wordsArray.length;
         }
       }
-      // Function that updates the score...
+      // Function that updates score...
       function updateScore() {
         document.querySelector("#score").innerHTML = "Score: " + score;
       }
