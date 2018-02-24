@@ -11,8 +11,7 @@
   <h1>Guess the Artist</h1>
   <h2>Clink any letter</h2>
 
-
-  <p id="score"></p>
+  <p><id="score"</p>
   <p>
     <span id="WordToGuess"></span>
     <span id="words"></span>
@@ -30,6 +29,7 @@
     var score = 0;
     var wordsIndex = 0;
     var wordtoDisplay = "";
+    var lettersnotfoundinword = true;
     var wtgId = document.getElementById("wordToGuess");
 
 
@@ -44,75 +44,38 @@
       underscores.push('_');
     }
     console.log(underscores);
-    
+
     document.onkeyup = function (event) {
       var userInput = String.fromCharCode(event.which).toLowerCase();
       console.log(userInput);
-      for (var i = 0; i < letters.length; i++) {
 
-        if (userInput === letters[i]) {
-          alert("the letter exist in the word");
-          score++;
-        console.log("score " + score);
-          underscores [i] = letters [i];
+      for (var i = 0; i < letters.length; i++) {
+        if (userInput === letters[i]) 
+        alert("the letter exist in the word");
+        // score++;
+        // console.log("score " + score);
+        // underscores [i] = letters [i];
         }
       }
-      function renderWords(){ 
+
+    // // }
+    // lettersnotfoundinword = false;
+    //   underscores [i] = userInput[i];
+    //   alert ("This letter is not in the word");
+    //   else 
+    //   alert ("its not in the word");{
+
+    // }
+    // function updateScore() {
+    //   document.querySelector("#score").innerHTML = "Score: " + score;
+    // }
+    function renderWords() {
       console.log(underscores)
       document.getElementById("words").textContent = underscores;
+      if (lettersnotfoundinword)
+        alert("Your letter is not in the word");
     }
     renderWords();
-    // ALL OF THIS PART ITS FROM THE QUESTION EXAMPLE, IM PLAYING WITH IT.///
-    // Functions
-    // Function to render the words.
-
-    
-        // If there are still more words, render the next one.
-        // if (wordsIndex <= (words.length - 1)) {
-        //   document.querySelector("#words").innerHTML = words[wordsIndex][0];
-        // }
-        // // If there aren't, end game.
-        // else {
-        //   document.querySelector("#words").innerHTML = "Game Over!";
-        //   document.querySelector("#score").innerHTML = "Final Score: " + score + " out of " + words.length;
-        // }
-      }
-      // Function that updates score...
-      // function updateScore() {
-      //   document.querySelector("#score").innerHTML = "Score: " + score;
-      // }
-      // // Main Process
-      // // Calling functions to start the game.
-      // renderWords();
-      // updateScore();
-      // // When the user presses a key, it will run the following function...
-      // document.onkeyup = function (event) {
-      //   // If there are no more words, stop.
-      //   if (wordsIndex === words.length) {
-      //     return;
-      //   }
-
-      //   // Only run this code if "letter" or "letter" were pressed.
-      //   if (userInput === "a" || userInput === "b" || userInput === "c" || userInput === "d" || userInput === "e" ||
-      //     userInput === "f" || userInput === "i" || userInput === "j" ||
-      //     userInput === "k" || userInput === "l" || userInput === "m" || userInput === "n" || userInput === "o" ||
-      //     userInput === "p" || userInput === "q" || userInput === "r" || userInput === "s" ||
-      //     userInput === "t" || userInput === "u" || userInput === "v" || userInput === "w" || userInput === "x" ||
-      //     userInput === "y" || userInput === "z") {
-      //     // If they guess the correct answer, increase and update score, alert them they got it right.
-      //     if (userInput === wordsArray[wordsIndex][1]) {
-      //       alert("Correct!");
-
-      //     }
-      //     // If wrong, alert them they are wrong.
-      //     else {
-      //       alert("Wrong!");
-      //     }
-      //     // Increment the wordsIndex variable and call the renderwords function.
-      //     wordsIndex++;
-      //     renderWords();
-      //   }
-      // };
   </script>
 
 </body>
